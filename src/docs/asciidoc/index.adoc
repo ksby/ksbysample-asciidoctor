@@ -1,0 +1,23 @@
+= Hello, AsciiDoc!
+Doc Writer <doc@example.com>
+:lang: ja
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+== First Section
+
+* item 1
+* item 2
+
+[source,ruby]
+puts "Hello, World!"
+
+[source,java]
+----
+public class Person {
+    private String name;
+        public Person(String name) {
+        this.name = name;
+    }
+}
+----
