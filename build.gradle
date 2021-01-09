@@ -9,7 +9,7 @@ repositories {
 asciidoctor {
     sourceDir file("src/docs/asciidoc")
     sources {
-        include "index.adoc"
+        include "01_simple/index.adoc"
     }
 }
 
