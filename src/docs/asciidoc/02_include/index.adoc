@@ -1,0 +1,15 @@
+= include directive で章毎にファイルを分けてみる
+:lang: ja
+:doctype: book
+:idprefix:
+:idseparator: -
+:tabsize: 4
+:sectanchors:
+:sectnums:
+:icons: font
+:hide-uri-scheme:
+:docinfo: shared,private
+:docinfodir: src/docs/docinfo
+
+include::src/docs/asciidoc/02_include/01.adoc[leveloffset=+1]
+include::src/docs/asciidoc/02_include/02.adoc[leveloffset=+1]

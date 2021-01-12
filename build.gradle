@@ -9,7 +9,12 @@ repositories {
 asciidoctor {
     sourceDir file("src/docs/asciidoc")
     sources {
-        include "01_simple/index.adoc"
+        include "**/index.adoc"
+    }
+    resources {
+        from("${sourceDir}") {
+            include "**/*.png"
+        }
     }
 }
 

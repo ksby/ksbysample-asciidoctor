@@ -1,0 +1,46 @@
+[[asciidoctor-gradle-makehtml]]
+= Asciidoctor+Gradle の環境で AsciiDoc 形式のドキュメントから HTML ファイルを生成してみる
+
+[[asciidoctor-gradle-makehtml-overview]]
+== 概要
+
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/[Spring Boot Reference Documentation] が AsciiDoc 形式のドキュメントで記述されていることは知っていたのですが、これまで AsciiDoc 形式で記述したことがありませんでした。 https://junit.org/junit5/docs/current/user-guide/[JUnit 5 のドキュメント] やこの前 https://ksby.hatenablog.com/entry/2020/12/26/233231[Spring Boot 2.2.x の Web アプリを 2.3.x へバージョンアップする ( 番外編 )( IntelliJ IDEA の docToolchain/diagrams.net-intellij-plugin を追加する )] でインストールした https://drawio-intellij-plugin.netlify.app/[diagrams.net-intellij-plugin のドキュメント] も AsciiDoc で記述されており、興味が湧いたので使い方を調べてみます。
+
+AsciiDoc でドキュメントを生成するツールとして Asciidoctor があり、Asciidoctor には Gradle の Plugin が存在するので、Asciidoctor+Gradle で環境を構築します。
+
+[[asciidoctor-gradle-makehtml-item]]
+== 手順
+
+[[asciidoctor-gradle-makehtml-item-makeproject]]
+=== ksbysample-asciidoctor プロジェクトを作成する
+
+. Github で ksbysample-asciidoctor レポジトリ を作成します。
+. D:\project-springboot\ksbysample-asciidoctor に clone します。
+
+[[asciidoctor-gradle-makehtml-item-write-buildgradle]]
+=== build.gradle を記述する
+
+build.gradle に以下の内容を記述します。
+
+[source,groovy]
+----
+plugins {
+    id "org.asciidoctor.jvm.convert" version "3.3.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+asciidoctor {
+    sourceDir file("src/docs/asciidoc")
+    sources {
+        include "index.adoc"
+    }
+}
+----
+
+* plugins block に id "org.asciidoctor.jvm.convert" version "3.3.0" を記述します。Asciidoctor Gradle Plugin Suite の Quick Start に記載されていたバージョンは 3.1.0 ですが、Search Gradle plugins で検索すると 3.3.0 でしたので 3.3.0 にします。
+* asciidoctor block を記述します。Defining Sources の build.gradle のサンプルを参考に、outputDir は書かなくても build/docs/asciidoc の下に出力してくれるようなので省きました。
+
+NOTE: Gradle Tool Window 左上の「Reload All Gradle Projects」ボタンをクリックして更新すると、documentation の下に asciidoctor タスクが表示されます。
