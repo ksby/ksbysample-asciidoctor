@@ -9,7 +9,7 @@
 :icons: font
 :hide-uri-scheme:
 :docinfo: shared,private
-:docinfodir: src/docs/docinfo
+:docinfodir: ../../docinfo
 
-include::src/docs/asciidoc/02_include/01.adoc[leveloffset=+1]
-include::src/docs/asciidoc/02_include/02.adoc[leveloffset=+1]
+include::01.adoc[leveloffset=+1]
+include::02.adoc[leveloffset=+1]

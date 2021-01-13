@@ -8,6 +8,7 @@ repositories {
 
 asciidoctor {
     sourceDir file("src/docs/asciidoc")
+    baseDirFollowsSourceFile()
     sources {
         include "**/index.adoc"
     }
