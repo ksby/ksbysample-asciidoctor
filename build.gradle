@@ -14,7 +14,8 @@ asciidoctor {
     }
     resources {
         from("${sourceDir}") {
-            include "**/*.png"
+            include "**/*.png",
+                    "**/*.js"
         }
     }
 }

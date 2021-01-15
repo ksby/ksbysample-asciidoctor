@@ -7,3 +7,10 @@ build/
 *.ipr
 *.iws
 .idea/
+
+# Node.js, npm
+node_modules/
+npm-debug.log
+
+# tocbot.js
+src/docs/asciidoc/js/tocbot*

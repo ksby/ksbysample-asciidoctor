@@ -1,0 +1,29 @@
+{
+  "name": "ksbysample-asciidoctor",
+  "version": "1.0.0",
+  "description": "Asciidoctor+gradle による AsciiDoc 形式のドキュメント作成環境調査用レポジトリ",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "run-s copy:tocbot",
+    "copy:tocbot": "copyfiles -f node_modules/tocbot/dist/*.js src/docs/asciidoc/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksby/ksbysample-asciidoctor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksby/ksbysample-asciidoctor/issues"
+  },
+  "homepage": "https://github.com/ksby/ksbysample-asciidoctor#readme",
+  "dependencies": {
+    "tocbot": "^4.12.1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}
