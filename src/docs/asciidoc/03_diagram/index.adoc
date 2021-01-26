@@ -4,14 +4,14 @@ Doc Writer <doc@example.com>
 
 == シーケンス図
 
-[plantuml,example-sequence,svg]
+[plantuml]
 ....
 include::example-sequence.puml[]
 ....
 
 == クラス図
 
-[plantuml,example-class,svg]
+[plantuml]
 ....
 include::example-class.puml[]
 ....

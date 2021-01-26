@@ -1,12 +1,19 @@
 plugins {
     id "org.asciidoctor.jvm.convert" version "3.3.0"
+    id "org.asciidoctor.jvm.gems" version "3.3.0"
 }
 
 repositories {
     mavenCentral()
+    ruby.gems()
+}
+
+dependencies {
+    asciidoctorGems "rubygems:asciidoctor-kroki:0.3.0"
 }
 
 asciidoctor {
+    dependsOn asciidoctorGemsPrepare
     sourceDir file("src/docs/asciidoc")
     baseDirFollowsSourceFile()
     sources {
@@ -21,9 +28,27 @@ asciidoctor {
 }
 
 asciidoctorj {
-    modules {
-        diagram.use()
-        diagram.version "2.1.0"
-    }
-    attributes "source-highlighter" : "rouge"
+    requires = [
+            "asciidoctor-kroki"
+    ]
+    attributes "source-highlighter": "rouge"
+    attributes "kroki-server-url": "http://localhost:8000"
+    attributes "kroki-fetch-diagram": "true"
 }
+
+// Kroki で生成してローカルにダウンロードした画像ファイルを asciidoctor.outputDir に移動する
+task asciidoctorWithMoveDiagSvg(group: "documentation") {
+    doLast {
+        def moveFilePattern = "**/diag-*.svg"
+
+        copy() {
+            from(asciidoctor.sourceDir) {
+                include moveFilePattern
+            }
+            into asciidoctor.outputDir
+        }
+
+        delete fileTree(asciidoctor.sourceDir) { include moveFilePattern }
+    }
+}
+asciidoctorWithMoveDiagSvg.dependsOn asciidoctor
